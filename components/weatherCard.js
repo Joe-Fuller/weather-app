@@ -1,3 +1,8 @@
-export default function WeatherCard({}) {
-  return <div>The weather</div>;
+export default function WeatherCard({ temp, type }) {
+  return (
+    <div>
+      <h2>{type}</h2>
+      <p>{temp}</p>
+    </div>
+  );
 }
