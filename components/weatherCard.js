@@ -8,7 +8,7 @@ export default function WeatherCard({ weatherData }) {
   const weatherIconPath = `/${weatherData.current.weather[0].icon}.png`;
 
   return (
-    <div className="bg-gray-600 w-64 h-80 p-4">
+    <div className="bg-gray-600 w-64 h-72 p-4 flex flex-col items-center justify-center">
       <h2 className="text-xl font-bold mb-2">{location}</h2>
       <h2 className="text-xl font-bold mb-2">{type}</h2>
       <p className="text-xl">{temp}°C</p>
