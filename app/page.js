@@ -3,6 +3,7 @@
 import { useState } from "react";
 import CitySelector from "@/components/citySelector";
 import WeatherCard from "@/components/weatherCard";
+import WeatherCardCollection from "@/components/weatherCardCollection";
 
 export default function Home() {
   const [city, setCity] = useState("");
@@ -92,6 +93,9 @@ export default function Home() {
       </button>
 
       <WeatherCard weatherData={weatherData}></WeatherCard>
+      <WeatherCardCollection
+        weatherDataCollection={[weatherData, weatherData]}
+      ></WeatherCardCollection>
     </main>
   );
 }
