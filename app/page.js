@@ -81,8 +81,8 @@ export default function Home() {
   // };
 
   return (
-    <main>
-      <h1>Welcome to Joe's weather app</h1>
+    <main className="p-10 flex flex-col items-center justify-center">
+      <h1 className="p-4 text-2xl">Welcome to Joe's weather app</h1>
       <CitySelector city={city} setCity={setCity}></CitySelector>
       <button
         onClick={getWeather}
