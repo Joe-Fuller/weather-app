@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function WeatherCard({ weatherData }) {
   const location = weatherData.timezone;
-  const temp = weatherData.current.temp;
+  const temp = (weatherData.current.temp - 273.15).toFixed(1);
   const type = weatherData.current.weather[0].main;
 
   const weatherIconPath = `/${weatherData.current.weather[0].icon}.png`;
