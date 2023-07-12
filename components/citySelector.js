@@ -1,11 +1,7 @@
-import { useState } from "react";
-
-export default function CitySelector() {
-  const [city, setCity] = useState("");
-
+export default function CitySelector({ city, setCity }) {
   return (
     <form>
-      <label for="city">City:</label>
+      <label htmlFor="city">City:</label>
       <input
         type="text"
         id="city"

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import CitySelector from "@/components/citySelector";
 import WeatherCard from "@/components/weatherCard";
 
@@ -13,6 +14,7 @@ async function getWeather() {
 }
 
 export default function Home() {
+  const [city, setCity] = useState("");
   // const weatherData = getWeather();
 
   const weatherData = {
@@ -49,7 +51,7 @@ export default function Home() {
   return (
     <main>
       <h1>Welcome to Joe's weather app</h1>
-      <CitySelector></CitySelector>
+      <CitySelector city={city} setCity={setCity}></CitySelector>
       <WeatherCard weatherData={weatherData}></WeatherCard>
     </main>
   );
