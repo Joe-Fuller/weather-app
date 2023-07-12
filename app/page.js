@@ -1,3 +1,5 @@
+"use client";
+
 import CitySelector from "@/components/citySelector";
 import WeatherCard from "@/components/weatherCard";
 
