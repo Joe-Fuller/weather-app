@@ -39,6 +39,7 @@ export default function Home() {
   });
 
   async function getWeather() {
+    // This needs to use the lat, long (I think)
     const res = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${city},uk&APPID=773c1c3ec776d5f2490ffcf71260d854`
     );
@@ -48,7 +49,15 @@ export default function Home() {
     return res;
   }
 
-  // const weatherData = getWeather();
+  async function fetchCityInfo() {
+    const cityInfo = await fetch(
+      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=773c1c3ec776d5f2490ffcf71260d854`
+    );
+
+    console.log(cityInfo);
+
+    return cityInfo;
+  }
 
   // const weatherData = {
   //   lat: 33.44,
@@ -82,20 +91,34 @@ export default function Home() {
   // };
 
   return (
-    <main className="p-10 flex flex-col items-center justify-center">
+    <main className="p-10 flex flex-col">
       <h1 className="p-4 text-2xl">Welcome to Joe's weather app</h1>
-      <CitySelector city={city} setCity={setCity}></CitySelector>
-      <button
-        onClick={getWeather}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Get Weather
-      </button>
+      <div className="flex">
+        <div className="mr-4 flex-grow">
+          <CitySelector
+            city={city}
+            setCity={setCity}
+            fetchCityInfo={fetchCityInfo}
+          ></CitySelector>
+        </div>
+      </div>
 
-      <WeatherCard weatherData={weatherData}></WeatherCard>
-      <WeatherCardCollection
-        weatherDataCollection={[weatherData, weatherData]}
-      ></WeatherCardCollection>
+      <div className="flex">
+        <div className="mr-4 flex-grow-2">
+          <WeatherCard weatherData={weatherData}></WeatherCard>
+        </div>
+        <div className="grid grid-cols-1 gap-4 flex-grow">
+          <WeatherCardCollection
+            weatherDataCollection={[weatherData, weatherData]}
+          ></WeatherCardCollection>
+          <WeatherCardCollection
+            weatherDataCollection={[weatherData, weatherData]}
+          ></WeatherCardCollection>
+          <WeatherCardCollection
+            weatherDataCollection={[weatherData, weatherData]}
+          ></WeatherCardCollection>
+        </div>
+      </div>
     </main>
   );
 }
