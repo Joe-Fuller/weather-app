@@ -84,7 +84,13 @@ export default function Home() {
     <main>
       <h1>Welcome to Joe's weather app</h1>
       <CitySelector city={city} setCity={setCity}></CitySelector>
-      <button onClick={getWeather}>Get Weather</button>
+      <button
+        onClick={getWeather}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Get Weather
+      </button>
+
       <WeatherCard weatherData={weatherData}></WeatherCard>
     </main>
   );
