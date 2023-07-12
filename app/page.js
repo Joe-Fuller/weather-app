@@ -41,7 +41,7 @@ export default function Home() {
   async function getWeather() {
     // This needs to use the lat, long (I think)
     const res = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city},uk&APPID=773c1c3ec776d5f2490ffcf71260d854`
+      `http://api.openweathermap.org/data/2.5/weather?q=${city},uk&APPID=${process.env.OPENWEATHERMAP_API_KEY}`
     );
 
     console.log(res.json());
@@ -51,7 +51,7 @@ export default function Home() {
 
   async function fetchCityInfo() {
     const cityInfo = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=773c1c3ec776d5f2490ffcf71260d854`
+      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${process.env.OPENWEATHERMAP_API_KEY}`
     );
 
     console.log(cityInfo);
