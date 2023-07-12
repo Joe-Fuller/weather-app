@@ -1,3 +1,4 @@
+import CitySelector from "@/components/citySelector";
 import WeatherCard from "@/components/weatherCard";
 
 async function getWeather() {
@@ -46,6 +47,7 @@ export default function Home() {
   return (
     <main>
       <h1>Welcome to Joe's weather app</h1>
+      <CitySelector></CitySelector>
       <WeatherCard weatherData={weatherData}></WeatherCard>
     </main>
   );
