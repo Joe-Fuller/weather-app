@@ -5,7 +5,7 @@ export default function WeatherCard({ weatherData }) {
   const temp = weatherData.current.temp;
   const type = weatherData.current.weather.main;
   return (
-    <div className="bg-gray-600 w-72 h-80 p-4">
+    <div className="bg-gray-600 w-64 h-80 p-4">
       <h2>{location}</h2>
       <h2 className="text-2xl font-bold mb-2">{type}</h2>
       <p className="text-xl">{temp}°C</p>
