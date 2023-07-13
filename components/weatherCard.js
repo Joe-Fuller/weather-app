@@ -42,18 +42,22 @@ export default function WeatherCard({ weatherData }) {
 
   return (
     <div
-      className={`${backgroundColours[weatherIcon]} w-64 h-72 p-4 flex flex-col items-center justify-center`}
+      className={`relative ${backgroundColours[weatherIcon]} w-64 h-72 p-4 flex flex-col items-center justify-center`}
     >
-      <h2 className="text-xl font-bold mb-2">{location}</h2>
-      <h2 className="text-xl font-bold mb-2">{type}</h2>
-      <p className="text-xl">{temp}°C</p>
-      <Image
-        src={weatherIconPath}
-        width={100}
-        height={100}
-        alt="Icon of the weather"
-      ></Image>
-      <p>{formattedTime}</p>
+      <div className="flex flex-col items-center justify-center">
+        <h2 className="text-xl font-bold mb-2 absolute top-4">{type}</h2>
+        <p className="text-xl absolute top-10">{temp}°C</p>
+      </div>
+      <div>
+        <Image
+          src={weatherIconPath}
+          width={100}
+          height={100}
+          alt="Icon of the weather"
+          className="object-contain"
+        />
+      </div>
+      <p className="absolute bottom-4">{formattedTime}</p>
     </div>
   );
 }
