@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function WeatherCard({ weatherData }) {
+export default function WeatherCard({ weatherData, minTemp, maxTemp }) {
   const location = weatherData.name;
   const temp = (weatherData.main.temp - 273.15).toFixed(1);
   const type = weatherData.weather[0].main;
