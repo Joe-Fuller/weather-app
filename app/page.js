@@ -70,18 +70,21 @@ export default function Home() {
     <main
       className={`${backgroundColour} p-10 flex flex-col text-black min-h-screen`}
     >
-      <h1 className="p-4 text-2xl">Welcome to Joe's weather app</h1>
-      <div className="flex p-4">
-        <div className="mr-4 flex-grow">
-          <CitySelector
-            city={city}
-            setCity={setCity}
-            getWeather={getWeather}
-          ></CitySelector>
+      <h1 className="p-4 text-2xl text-center">Welcome to Joe's weather app</h1>
+      <div className="flex justify-center">
+        <div className="flex p-4">
+          <div className="mr-4">
+            <CitySelector
+              city={city}
+              setCity={setCity}
+              getWeather={getWeather}
+            />
+          </div>
         </div>
       </div>
-
-      {cityName ? <h2>Weather for {cityName}</h2> : null}
+      {cityName ? (
+        <h2 className="text-2xl flex justify-center">Weather for {cityName}</h2>
+      ) : null}
 
       <div className="flex">
         <div className="mr-4 flex-grow-2">
