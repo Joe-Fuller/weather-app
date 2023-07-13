@@ -8,6 +8,7 @@ import WeatherCardCollection from "@/components/weatherCardCollection";
 export default function Home() {
   const [city, setCity] = useState("");
   const [currentWeatherData, setCurrentWeatherData] = useState(false);
+  const [cityName, setCityName] = useState(false);
 
   const [fiveDayThreeHourWeatherData, setFiveDayThreeHourWeatherData] =
     useState(false);
@@ -25,6 +26,15 @@ export default function Home() {
     const receivedFiveDayThreeHourWeatherData =
       await fiveDayThreeHourWeatherDataRes.json();
     setFiveDayThreeHourWeatherData(receivedFiveDayThreeHourWeatherData.list);
+
+    const formattedCityName = city
+      .split(" ")
+      .map((word) => {
+        return word[0].toUpperCase() + word.substring(1);
+      })
+      .join(" ");
+
+    setCityName(formattedCityName);
   }
 
   const backgroundColour =
@@ -57,9 +67,7 @@ export default function Home() {
         </div>
       </div>
 
-      {currentWeatherData ? (
-        <h2>Weather for {city[0].toUpperCase() + city.substring(1)}</h2>
-      ) : null}
+      {cityName ? <h2>Weather for {cityName}</h2> : null}
 
       <div className="flex">
         <div className="mr-4 flex-grow-2">
