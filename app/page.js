@@ -8,43 +8,55 @@ import WeatherCardCollection from "@/components/weatherCardCollection";
 export default function Home() {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState({
-    lat: 33.44,
-    lon: -94.04,
-    timezone: "America/Chicago",
-    timezone_offset: -18000,
-    current: {
-      dt: 1684929490,
-      sunrise: 1684926645,
-      sunset: 1684977332,
-      temp: 292.55,
-      feels_like: 292.87,
-      pressure: 1014,
-      humidity: 89,
-      dew_point: 290.69,
-      uvi: 0.16,
-      clouds: 53,
-      visibility: 10000,
-      wind_speed: 3.13,
-      wind_deg: 93,
-      wind_gust: 6.71,
-      weather: [
-        {
-          id: 803,
-          main: "Clouds",
-          description: "broken clouds",
-          icon: "04d",
-        },
-      ],
+    coord: {
+      lon: -2.9779,
+      lat: 53.4106,
     },
+    weather: [
+      {
+        id: 801,
+        main: "Clouds",
+        description: "few clouds",
+        icon: "02d",
+      },
+    ],
+    base: "stations",
+    main: {
+      temp: 291.36,
+      feels_like: 291.04,
+      temp_min: 290.03,
+      temp_max: 293.23,
+      pressure: 1013,
+      humidity: 69,
+    },
+    visibility: 10000,
+    wind: {
+      speed: 5.14,
+      deg: 260,
+    },
+    clouds: {
+      all: 20,
+    },
+    dt: 1689243565,
+    sys: {
+      type: 2,
+      id: 2008599,
+      country: "GB",
+      sunrise: 1689220756,
+      sunset: 1689280532,
+    },
+    timezone: 3600,
+    id: 2644210,
+    name: "Liverpool",
+    cod: 200,
   });
 
   async function getWeather() {
     const res = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${city},uk&APPID=773c1c3ec776d5f2490ffcf71260d854`
     );
-
-    console.log(res.json());
-    setWeatherData(res);
+    const receivedWeatherData = await res.json();
+    setWeatherData(receivedWeatherData);
     return res;
   }
 
@@ -57,37 +69,6 @@ export default function Home() {
 
   //   return cityInfo;
   // }
-
-  // const weatherData = {
-  //   lat: 33.44,
-  //   lon: -94.04,
-  //   timezone: "America/Chicago",
-  //   timezone_offset: -18000,
-  //   current: {
-  //     dt: 1684929490,
-  //     sunrise: 1684926645,
-  //     sunset: 1684977332,
-  //     temp: 292.55,
-  //     feels_like: 292.87,
-  //     pressure: 1014,
-  //     humidity: 89,
-  //     dew_point: 290.69,
-  //     uvi: 0.16,
-  //     clouds: 53,
-  //     visibility: 10000,
-  //     wind_speed: 3.13,
-  //     wind_deg: 93,
-  //     wind_gust: 6.71,
-  //     weather: [
-  //       {
-  //         id: 803,
-  //         main: "Clouds",
-  //         description: "broken clouds",
-  //         icon: "04d",
-  //       },
-  //     ],
-  //   },
-  // };
 
   return (
     <main className="p-10 flex flex-col">
