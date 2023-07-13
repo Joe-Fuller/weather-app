@@ -3,7 +3,7 @@
 import { useState } from "react";
 import CitySelector from "@/components/citySelector";
 import WeatherCard from "@/components/weatherCard";
-import WeatherCardCollection from "@/components/weatherCardCollection";
+import ForecastCardCollection from "@/components/forecastCardCollection";
 
 export default function Home() {
   const [city, setCity] = useState("");
@@ -100,11 +100,11 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 gap-4 flex-grow">
           {fiveDayThreeHourWeatherData ? (
-            <WeatherCardCollection
+            <ForecastCardCollection
               weatherDataCollection={fiveDayThreeHourWeatherData}
               minTemp={minTemp}
               maxTemp={maxTemp}
-            ></WeatherCardCollection>
+            ></ForecastCardCollection>
           ) : null}
         </div>
       </div>
