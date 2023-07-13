@@ -83,13 +83,19 @@ export default function Home() {
         </div>
       </div>
       {cityName ? (
-        <h2 className="text-2xl flex justify-center">Weather for {cityName}</h2>
+        <h2 className="text-2xl flex justify-center p-4">
+          Weather for {cityName}
+        </h2>
       ) : null}
 
       <div className="flex">
         <div className="mr-4 flex-grow-2">
           {currentWeatherData ? (
-            <WeatherCard weatherData={currentWeatherData}></WeatherCard>
+            <WeatherCard
+              weatherData={currentWeatherData}
+              minTemp={minTemp}
+              maxTemp={maxTemp}
+            ></WeatherCard>
           ) : null}
         </div>
         <div className="grid grid-cols-1 gap-4 flex-grow">
