@@ -42,16 +42,6 @@ export default function Home() {
       ? "bg-background-day"
       : "bg-background-night";
 
-  function isDaytime() {
-    const currentTime = new Date();
-    const currentHour = currentTime.getHours();
-
-    // Assume daytime if the current hour is between 6 AM and 6 PM
-    const isDay = currentHour >= 6 && currentHour < 18;
-
-    return isDay;
-  }
-
   return (
     <main
       className={`${backgroundColour} p-10 flex flex-col text-black min-h-screen`}
