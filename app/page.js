@@ -91,11 +91,7 @@ export default function Home() {
       <div className="flex">
         <div className="mr-4 flex-grow-2">
           {currentWeatherData ? (
-            <WeatherCard
-              weatherData={currentWeatherData}
-              minTemp={minTemp}
-              maxTemp={maxTemp}
-            ></WeatherCard>
+            <WeatherCard weatherData={currentWeatherData}></WeatherCard>
           ) : null}
         </div>
         <div className="grid grid-cols-1 gap-4 flex-grow">

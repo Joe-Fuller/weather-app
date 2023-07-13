@@ -1,18 +1,12 @@
 import Image from "next/image";
 
-export default function WeatherCard({ weatherData, minTemp, maxTemp }) {
+export default function WeatherCard({ weatherData }) {
   const temp = (weatherData.main.temp - 273.15).toFixed(1);
   const type = weatherData.weather[0].main;
 
   const weatherIcon = weatherData.weather[0].icon;
 
   const weatherIconPath = `/${weatherIcon}.png`;
-
-  function calculateIconPosition() {
-    const percentage = (weatherData.main.temp - minTemp) / (maxTemp - minTemp);
-    const imagePosition = (100 - percentage * 100) * 0.5 + 10;
-    return `${imagePosition}%`;
-  }
 
   const time = weatherData.dt_txt;
   let formattedTime = "";
@@ -53,7 +47,7 @@ export default function WeatherCard({ weatherData, minTemp, maxTemp }) {
         <h2 className="text-xl font-bold mb-2 absolute top-4">{type}</h2>
         <p className="text-xl absolute top-10">{temp}°C</p>
       </div>
-      <div className="relative" style={{ top: calculateIconPosition() }}>
+      <div className="relative" style={{ top: "35%" }}>
         <Image
           src={weatherIconPath}
           width={100}
