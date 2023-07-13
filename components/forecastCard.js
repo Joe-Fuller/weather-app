@@ -45,9 +45,33 @@ export default function WeatherCard({ weatherData, minTemp, maxTemp }) {
     "50n": "bg-mist-night",
   };
 
+  const weatherCodeToColor = {
+    "01d": "#FBD638",
+    "01n": "#DBA901",
+    "02d": "#F5F3B9",
+    "02n": "#CFC958",
+    "03d": "#E5E9ED",
+    "03n": "#8B9095",
+    "04d": "#D1D9E6",
+    "04n": "#657182",
+    "09d": "#91A8BA",
+    "09n": "#4E6A81",
+    "10d": "#A3B8CC",
+    "10n": "#5B7489",
+    "11d": "#727C8E",
+    "11n": "#3B4451",
+    "13d": "#E8F0F8",
+    "13n": "#93A1B1",
+    "50d": "#ECEFF4",
+    "50n": "#8D98A4",
+  };
+
   return (
     <div
       className={`relative ${backgroundColours[weatherIcon]} w-64 h-96 p-4 flex flex-col items-center`}
+      style={{
+        boxShadow: `0px 0px 10px 5px${weatherCodeToColor[weatherIcon]}`,
+      }}
     >
       <div className="flex flex-col items-center justify-center">
         <h2 className="text-xl font-bold mb-2 absolute top-4">{type}</h2>
