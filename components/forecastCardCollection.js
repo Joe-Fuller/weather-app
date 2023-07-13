@@ -7,13 +7,7 @@ export default function ForecastCardCollection({
 }) {
   return (
     <div className="flex flex-row">
-      <div
-        className="overflow-x-auto flex"
-        style={{
-          boxShadow:
-            "0px -25px 20px -20px rgba(0,0,0,0.45),0px 25px 20px -20px rgba(0,0,0,0.45)",
-        }}
-      >
+      <div className="overflow-x-auto flex">
         {weatherDataCollection.map((weatherData, index) => (
           <div className="w-64" key={index}>
             <ForecastCard
