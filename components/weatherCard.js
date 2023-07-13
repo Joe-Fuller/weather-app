@@ -8,6 +8,14 @@ export default function WeatherCard({ weatherData }) {
   const weatherIconPath = `/${weatherData.weather[0].icon}.png`;
 
   const time = weatherData.dt_txt;
+  let formattedTime = "";
+  if (time) {
+    const date = new Date(time);
+    formattedTime = date.toLocaleTimeString([], {
+      hour: "numeric",
+      minute: "2-digit",
+    });
+  }
 
   return (
     <div className="bg-gray-600 w-64 h-72 p-4 flex flex-col items-center justify-center">
@@ -20,7 +28,7 @@ export default function WeatherCard({ weatherData }) {
         height={100}
         alt="Icon of the weather"
       ></Image>
-      <p>{time}</p>
+      <p>{formattedTime}</p>
     </div>
   );
 }
