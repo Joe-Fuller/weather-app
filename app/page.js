@@ -9,6 +9,8 @@ export default function Home() {
   const [city, setCity] = useState("");
   const [currentWeatherData, setCurrentWeatherData] = useState(false);
   const [cityName, setCityName] = useState(false);
+  const [minTemp, setMinTemp] = useState(0);
+  const [maxTemp, setMaxTemp] = useState(0);
 
   const [fiveDayThreeHourWeatherData, setFiveDayThreeHourWeatherData] =
     useState(false);
@@ -27,6 +29,8 @@ export default function Home() {
       await fiveDayThreeHourWeatherDataRes.json();
     setFiveDayThreeHourWeatherData(receivedFiveDayThreeHourWeatherData.list);
 
+    setHighAndLowTemp(receivedFiveDayThreeHourWeatherData);
+
     const formattedCityName = city
       .split(" ")
       .map((word) => {
@@ -35,6 +39,23 @@ export default function Home() {
       .join(" ");
 
     setCityName(formattedCityName);
+  }
+
+  function setHighAndLowTemp(data) {
+    let currentLow = 100000;
+    let currentHigh = -100000;
+
+    data.list.forEach((time) => {
+      if (time.main.temp < currentLow) {
+        currentLow = time.main.temp;
+      }
+      if (time.main.temp > currentHigh) {
+        currentHigh = time.main.temp;
+      }
+    });
+
+    setMinTemp(currentLow);
+    setMaxTemp(currentHigh);
   }
 
   const backgroundColour =
@@ -69,6 +90,8 @@ export default function Home() {
           {fiveDayThreeHourWeatherData ? (
             <WeatherCardCollection
               weatherDataCollection={fiveDayThreeHourWeatherData}
+              minTemp={minTemp}
+              maxTemp={maxTemp}
             ></WeatherCardCollection>
           ) : null}
         </div>
