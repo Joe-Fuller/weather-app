@@ -57,6 +57,10 @@ export default function Home() {
         </div>
       </div>
 
+      {currentWeatherData ? (
+        <h2>Weather for {city[0].toUpperCase() + city.substring(1)}</h2>
+      ) : null}
+
       <div className="flex">
         <div className="mr-4 flex-grow-2">
           {currentWeatherData ? (
