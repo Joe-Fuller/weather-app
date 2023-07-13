@@ -30,7 +30,10 @@ export default function Home() {
     setFiveDayThreeHourWeatherData(receivedFiveDayThreeHourWeatherData.list);
 
     setHighAndLowTemp(receivedFiveDayThreeHourWeatherData);
+    formatCityName();
+  }
 
+  function formatCityName() {
     const formattedCityName = city
       .split(" ")
       .map((word) => {
