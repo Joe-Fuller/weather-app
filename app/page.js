@@ -27,16 +27,6 @@ export default function Home() {
     setFiveDayThreeHourWeatherData(receivedFiveDayThreeHourWeatherData.list);
   }
 
-  // async function fetchCityInfo() {
-  //   const cityInfo = await fetch(
-  //     `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=773c1c3ec776d5f2490ffcf71260d854`
-  //   );
-
-  //   console.log(cityInfo);
-
-  //   return cityInfo;
-  // }
-
   return (
     <main className="p-10 flex flex-col">
       <h1 className="p-4 text-2xl">Welcome to Joe's weather app</h1>
