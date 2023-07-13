@@ -27,8 +27,23 @@ export default function Home() {
     setFiveDayThreeHourWeatherData(receivedFiveDayThreeHourWeatherData.list);
   }
 
+  const backgroundColour =
+    new Date().getHours() >= 6 && new Date().getHours() < 18
+      ? "bg-background-day"
+      : "bg-background-night";
+
+  function isDaytime() {
+    const currentTime = new Date();
+    const currentHour = currentTime.getHours();
+
+    // Assume daytime if the current hour is between 6 AM and 6 PM
+    const isDay = currentHour >= 6 && currentHour < 18;
+
+    return isDay;
+  }
+
   return (
-    <main className="p-10 flex flex-col">
+    <main className={`${backgroundColour} p-10 flex flex-col text-black`}>
       <h1 className="p-4 text-2xl">Welcome to Joe's weather app</h1>
       <div className="flex">
         <div className="mr-4 flex-grow">
