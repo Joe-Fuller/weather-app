@@ -7,49 +7,7 @@ import WeatherCardCollection from "@/components/weatherCardCollection";
 
 export default function Home() {
   const [city, setCity] = useState("");
-  const [currentWeatherData, setCurrentWeatherData] = useState({
-    coord: {
-      lon: -2.9779,
-      lat: 53.4106,
-    },
-    weather: [
-      {
-        id: 801,
-        main: "Clouds",
-        description: "few clouds",
-        icon: "02d",
-      },
-    ],
-    base: "stations",
-    main: {
-      temp: 291.36,
-      feels_like: 291.04,
-      temp_min: 290.03,
-      temp_max: 293.23,
-      pressure: 1013,
-      humidity: 69,
-    },
-    visibility: 10000,
-    wind: {
-      speed: 5.14,
-      deg: 260,
-    },
-    clouds: {
-      all: 20,
-    },
-    dt: 1689243565,
-    sys: {
-      type: 2,
-      id: 2008599,
-      country: "GB",
-      sunrise: 1689220756,
-      sunset: 1689280532,
-    },
-    timezone: 3600,
-    id: 2644210,
-    name: "Liverpool",
-    cod: 200,
-  });
+  const [currentWeatherData, setCurrentWeatherData] = useState(false);
 
   const [fiveDayThreeHourWeatherData, setFiveDayThreeHourWeatherData] =
     useState(false);
@@ -94,7 +52,9 @@ export default function Home() {
 
       <div className="flex">
         <div className="mr-4 flex-grow-2">
-          <WeatherCard weatherData={currentWeatherData}></WeatherCard>
+          {currentWeatherData ? (
+            <WeatherCard weatherData={currentWeatherData}></WeatherCard>
+          ) : null}
         </div>
         <div className="grid grid-cols-1 gap-4 flex-grow">
           {fiveDayThreeHourWeatherData ? (
