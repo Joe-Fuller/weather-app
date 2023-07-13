@@ -27,7 +27,7 @@ export default function WeatherCard({ weatherData, minTemp, maxTemp }) {
   const backgroundColours = {
     "01d": "bg-clearSky-day",
     "01n": "bg-clearSky-night",
-    "02d": "bg-fewCloud-day",
+    "02d": "bg-fewClouds-day",
     "02n": "bg-fewClouds-night",
     "03d": "bg-scatteredClouds-day",
     "03n": "bg-scatteredClouds-night",
