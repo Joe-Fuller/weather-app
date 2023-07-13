@@ -102,12 +102,6 @@ export default function Home() {
               weatherDataCollection={fiveDayThreeHourWeatherData}
             ></WeatherCardCollection>
           ) : null}
-          {/* <WeatherCardCollection
-            weatherDataCollection={[weatherData, weatherData]}
-          ></WeatherCardCollection>
-          <WeatherCardCollection
-            weatherDataCollection={[weatherData, weatherData]}
-          ></WeatherCardCollection> */}
         </div>
       </div>
     </main>
