@@ -1,12 +1,21 @@
 import WeatherCard from "./weatherCard";
 
-export default function WeatherCardCollection({ weatherDataCollection }) {
+export default function WeatherCardCollection({
+  weatherDataCollection,
+  minTemp,
+  maxTemp,
+}) {
   return (
     <div className="flex flex-row">
       <div className="overflow-x-auto flex">
         {weatherDataCollection.map((weatherData, index) => (
           <div className="w-64">
-            <WeatherCard key={index} weatherData={weatherData} />
+            <WeatherCard
+              key={index}
+              weatherData={weatherData}
+              minTemp={minTemp}
+              maxTemp={maxTemp}
+            />
           </div>
         ))}
       </div>
