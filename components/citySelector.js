@@ -1,9 +1,9 @@
-export default function CitySelector({ city, setCity, fetchCityInfo }) {
+export default function CitySelector({ city, setCity, getWeather }) {
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        fetchCityInfo();
+        getWeather(city);
       }}
     >
       <label htmlFor="city">City:</label>
