@@ -7,7 +7,7 @@ import WeatherCardCollection from "@/components/weatherCardCollection";
 
 export default function Home() {
   const [city, setCity] = useState("");
-  const [weatherData, setWeatherData] = useState({
+  const [currentWeatherData, setCurrentWeatherData] = useState({
     coord: {
       lon: -2.9779,
       lat: 53.4106,
@@ -51,13 +51,22 @@ export default function Home() {
     cod: 200,
   });
 
+  const [fiveDayThreeHourWeatherData, setFiveDayThreeHourWeatherData] =
+    useState(false);
+
   async function getWeather() {
-    const res = await fetch(
+    const currentWeatherDataRes = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${city},uk&APPID=773c1c3ec776d5f2490ffcf71260d854`
     );
-    const receivedWeatherData = await res.json();
-    setWeatherData(receivedWeatherData);
-    return res;
+    const receivedCurrentWeatherData = await currentWeatherDataRes.json();
+    setCurrentWeatherData(receivedCurrentWeatherData);
+
+    const fiveDayThreeHourWeatherDataRes = await fetch(
+      `http://api.openweathermap.org/data/2.5/forecast?q=${city},uk&APPID=773c1c3ec776d5f2490ffcf71260d854`
+    );
+    const receivedFiveDayThreeHourWeatherData =
+      await fiveDayThreeHourWeatherDataRes.json();
+    setFiveDayThreeHourWeatherData(receivedFiveDayThreeHourWeatherData.list);
   }
 
   // async function fetchCityInfo() {
@@ -85,18 +94,20 @@ export default function Home() {
 
       <div className="flex">
         <div className="mr-4 flex-grow-2">
-          <WeatherCard weatherData={weatherData}></WeatherCard>
+          <WeatherCard weatherData={currentWeatherData}></WeatherCard>
         </div>
         <div className="grid grid-cols-1 gap-4 flex-grow">
-          <WeatherCardCollection
+          {fiveDayThreeHourWeatherData ? (
+            <WeatherCardCollection
+              weatherDataCollection={fiveDayThreeHourWeatherData}
+            ></WeatherCardCollection>
+          ) : null}
+          {/* <WeatherCardCollection
             weatherDataCollection={[weatherData, weatherData]}
           ></WeatherCardCollection>
           <WeatherCardCollection
             weatherDataCollection={[weatherData, weatherData]}
-          ></WeatherCardCollection>
-          <WeatherCardCollection
-            weatherDataCollection={[weatherData, weatherData]}
-          ></WeatherCardCollection>
+          ></WeatherCardCollection> */}
         </div>
       </div>
     </main>

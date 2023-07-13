@@ -1,12 +1,13 @@
 import Image from "next/image";
 
 export default function WeatherCard({ weatherData }) {
-  console.log(weatherData);
   const location = weatherData.name;
   const temp = (weatherData.main.temp - 273.15).toFixed(1);
   const type = weatherData.weather[0].main;
 
   const weatherIconPath = `/${weatherData.weather[0].icon}.png`;
+
+  const time = weatherData.dt_txt;
 
   return (
     <div className="bg-gray-600 w-64 h-72 p-4 flex flex-col items-center justify-center">
@@ -19,6 +20,7 @@ export default function WeatherCard({ weatherData }) {
         height={100}
         alt="Icon of the weather"
       ></Image>
+      <p>{time}</p>
     </div>
   );
 }
