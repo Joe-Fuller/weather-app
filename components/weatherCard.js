@@ -9,6 +9,12 @@ export default function WeatherCard({ weatherData, minTemp, maxTemp }) {
 
   const weatherIconPath = `/${weatherIcon}.png`;
 
+  function calculateIconPosition() {
+    const percentage = (weatherData.main.temp - minTemp) / (maxTemp - minTemp);
+    const imagePosition = (100 - percentage * 100) * 0.5 + 10;
+    return `${imagePosition}%`;
+  }
+
   const time = weatherData.dt_txt;
   let formattedTime = "";
   if (time) {
@@ -42,13 +48,13 @@ export default function WeatherCard({ weatherData, minTemp, maxTemp }) {
 
   return (
     <div
-      className={`relative ${backgroundColours[weatherIcon]} w-64 h-72 p-4 flex flex-col items-center justify-center`}
+      className={`relative ${backgroundColours[weatherIcon]} w-64 h-96 p-4 flex flex-col items-center`}
     >
       <div className="flex flex-col items-center justify-center">
         <h2 className="text-xl font-bold mb-2 absolute top-4">{type}</h2>
         <p className="text-xl absolute top-10">{temp}°C</p>
       </div>
-      <div>
+      <div className="relative" style={{ top: calculateIconPosition() }}>
         <Image
           src={weatherIconPath}
           width={100}
