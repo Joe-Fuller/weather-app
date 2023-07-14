@@ -123,7 +123,7 @@ export default function ForecastCard({ weatherData, minTemp, maxTemp }) {
 
       <div className="absolute bottom-0 left-0 w-full z-0">
         <div
-          className="bg-blue-500 h-[10%] transition-height duration-500"
+          className="bg-blue-500 transition-height duration-500"
           style={{ height: rainHeight }}
         ></div>
       </div>
