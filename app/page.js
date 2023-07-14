@@ -13,6 +13,8 @@ export default function Home() {
   const [cityName, setCityName] = useState(false);
   const [minTemp, setMinTemp] = useState(0);
   const [maxTemp, setMaxTemp] = useState(0);
+  const [minRain, setMinRain] = useState(0);
+  const [maxRain, setMaxRain] = useState(0);
 
   const [fiveDayThreeHourWeatherData, setFiveDayThreeHourWeatherData] =
     useState(false);
@@ -71,6 +73,23 @@ export default function Home() {
     setMaxTemp(currentHigh);
   }
 
+  function setHighAndLowRain(data) {
+    let currentLow = 100000;
+    let currentHigh = -100000;
+
+    data.list.forEach((time) => {
+      if (time.rain["1h"] < currentLow) {
+        currentLow = time.rain["1h"];
+      }
+      if (time.rain["1h"] > currentHigh) {
+        currentHigh = time.rain["1h"];
+      }
+    });
+
+    setMinRain(currentLow);
+    setMaxRain(currentHigh);
+  }
+
   const backgroundColour =
     new Date().getHours() >= 6 && new Date().getHours() < 18
       ? "bg-background-day"
@@ -104,7 +123,11 @@ export default function Home() {
         <div className="flex">
           <div className="mr-4 flex-grow-2">
             {currentWeatherData ? (
-              <WeatherCard weatherData={currentWeatherData}></WeatherCard>
+              <WeatherCard
+                weatherData={currentWeatherData}
+                minRain={minRain}
+                maxRain={maxRain}
+              ></WeatherCard>
             ) : null}
           </div>
           <div className="grid grid-cols-1 gap-4 flex-grow">
@@ -113,6 +136,8 @@ export default function Home() {
                 weatherDataCollection={fiveDayThreeHourWeatherData}
                 minTemp={minTemp}
                 maxTemp={maxTemp}
+                minRain={minRain}
+                maxRain={maxRain}
               ></ForecastCardCollection>
             ) : null}
           </div>
