@@ -41,6 +41,7 @@ export default function Home() {
       setFiveDayThreeHourWeatherData(receivedFiveDayThreeHourWeatherData.list);
 
       setHighAndLowTemp(receivedFiveDayThreeHourWeatherData);
+      setHighAndLowRain(receivedFiveDayThreeHourWeatherData);
       formatCityName();
     }
   }
