@@ -68,7 +68,7 @@ export default function WeatherCard({ weatherData, minTemp, maxTemp }) {
 
   return (
     <div
-      className={`relative ${backgroundColours[weatherIcon]} w-64 h-96 p-4 flex flex-col items-center`}
+      className={`relative ${backgroundColours[weatherIcon]} w-32 h-96 p-4 flex flex-col items-center`}
       style={{
         boxShadow: `0px 0px 10px 5px${weatherCodeToColor[weatherIcon]}`,
       }}
