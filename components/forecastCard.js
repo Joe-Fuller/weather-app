@@ -48,6 +48,8 @@ export default function ForecastCard({ weatherData, minTemp, maxTemp }) {
     }
   }
 
+  const rainHeight = weatherData.rain ? weatherData.rain["3h"] * 100 : 0;
+
   const backgroundColours = {
     "01d": "bg-clearSky-day",
     "01n": "bg-clearSky-night",
@@ -104,7 +106,7 @@ export default function ForecastCard({ weatherData, minTemp, maxTemp }) {
       <div className="flex flex-col items-center justify-center">
         <h2 className="text-xl font-bold mb-2 absolute top-4">{type}</h2>
       </div>
-      <div className="relative" style={{ top: calculateIconPosition() }}>
+      <div className="relative z-10" style={{ top: calculateIconPosition() }}>
         <Image
           src={weatherIconPath}
           width={100}
@@ -114,10 +116,17 @@ export default function ForecastCard({ weatherData, minTemp, maxTemp }) {
         />
         <p className="text-xl text-center">{temp}°C</p>
       </div>
-      <p className="absolute bottom-4">{formattedTime}</p>
+      <p className="absolute bottom-4 z-10">{formattedTime}</p>
       {formattedTime === "00:00" ? (
-        <p className="absolute bottom-0">{day}</p>
+        <p className="absolute bottom-0 z-10">{day}</p>
       ) : null}
+
+      <div className="absolute bottom-0 left-0 w-full z-0">
+        <div
+          className="bg-blue-500 h-[10%] transition-height duration-500"
+          style={{ height: rainHeight }}
+        ></div>
+      </div>
     </div>
   );
 }
