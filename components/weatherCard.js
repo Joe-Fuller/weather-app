@@ -44,8 +44,11 @@ export default function WeatherCard({ weatherData }) {
       className={`relative ${backgroundColours[weatherIcon]} w-64 h-[40rem] p-4 flex flex-col items-center`}
     >
       <div className="flex flex-col items-center justify-center">
-        <h2 className="text-xl font-bold mb-2 absolute top-4">{type}</h2>
-        <p className="text-xl absolute top-10">{temp}°C</p>
+        <h2 className="text-xl absolute top-4 text-center w-full">
+          Current Weather
+        </h2>
+        <h2 className="text-xl font-bold mb-2 absolute top-20">{type}</h2>
+        <p className="text-xl absolute top-28">{temp}°C</p>
       </div>
       <div className="relative" style={{ top: "35%" }}>
         <Image
