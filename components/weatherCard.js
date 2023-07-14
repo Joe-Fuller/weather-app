@@ -21,6 +21,10 @@ export default function WeatherCard({ weatherData }) {
     });
   }
 
+  const rainHeight = weatherData.rain ? weatherData.rain["1h"] * 100 : 0;
+
+  console.log(weatherData);
+
   const backgroundColours = {
     "01d": "bg-clearSky-day",
     "01n": "bg-clearSky-night",
@@ -46,7 +50,7 @@ export default function WeatherCard({ weatherData }) {
     <div
       className={`relative ${backgroundColours[weatherIcon]} w-64 h-[40rem] p-4 flex flex-col items-center`}
     >
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center z-10">
         <h2 className="text-xl absolute top-4 text-center w-full">
           Current Weather
         </h2>
@@ -56,7 +60,7 @@ export default function WeatherCard({ weatherData }) {
           Feels Like {feelsLikeTemp}°C
         </p>
       </div>
-      <div className="relative" style={{ top: "35%" }}>
+      <div className="relative z-10" style={{ top: "35%" }}>
         <Image
           src={weatherIconPath}
           width={100}
@@ -65,8 +69,14 @@ export default function WeatherCard({ weatherData }) {
           className="object-contain"
         />
       </div>
-      <p className="absolute bottom-10">High: {maxTemp}°C</p>
-      <p className="absolute bottom-4">Low: {minTemp}°C</p>
+      <p className="absolute bottom-10 z-10">High: {maxTemp}°C</p>
+      <p className="absolute bottom-4 z-10">Low: {minTemp}°C</p>
+      <div className="absolute bottom-0 left-0 w-full z-0">
+        <div
+          className="bg-blue-500 transition-height duration-500"
+          style={{ height: rainHeight }}
+        ></div>
+      </div>
     </div>
   );
 }
