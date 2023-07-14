@@ -7,7 +7,7 @@ export default function ForecastCardCollection({
 }) {
   return (
     <div className="flex flex-row">
-      <div className="overflow-x-auto flex py-10">
+      <div className="overflow-x-auto flex">
         {weatherDataCollection.map((weatherData, index) => (
           <div className="w-64" key={index}>
             <ForecastCard
