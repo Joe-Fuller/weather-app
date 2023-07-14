@@ -110,7 +110,7 @@ export default function ForecastCard({
         backgroundColours[weatherIcon]
       } w-32 h-[40rem] p-4 flex flex-col items-center ${
         formattedTime === "00:00" ? "border-l-2 border-black" : ""
-      }`}
+      } transition`}
       // style={{
       //   boxShadow: `0px 0px 10px 5px${weatherCodeToColor[weatherIcon]}`,
       // }}
