@@ -20,7 +20,7 @@ export default function Home() {
 
   async function getWeather() {
     const currentWeatherDataRes = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city},uk&APPID=773c1c3ec776d5f2490ffcf71260d854`
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=773c1c3ec776d5f2490ffcf71260d854`
     );
     if (!currentWeatherDataRes.ok) {
       setIsError(true);
@@ -33,7 +33,7 @@ export default function Home() {
       setCurrentWeatherData(receivedCurrentWeatherData);
 
       const fiveDayThreeHourWeatherDataRes = await fetch(
-        `http://api.openweathermap.org/data/2.5/forecast?q=${city},uk&APPID=773c1c3ec776d5f2490ffcf71260d854`
+        `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=773c1c3ec776d5f2490ffcf71260d854`
       );
       const receivedFiveDayThreeHourWeatherData =
         await fiveDayThreeHourWeatherDataRes.json();
