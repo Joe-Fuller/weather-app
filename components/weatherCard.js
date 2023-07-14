@@ -3,6 +3,7 @@ import Image from "next/image";
 export default function WeatherCard({ weatherData }) {
   const temp = (weatherData.main.temp - 273.15).toFixed(1);
   const type = weatherData.weather[0].main;
+  const feelsLikeTemp = (weatherData.main.feels_like - 273.15).toFixed(1);
 
   const weatherIcon = weatherData.weather[0].icon;
 
@@ -49,6 +50,9 @@ export default function WeatherCard({ weatherData }) {
         </h2>
         <h2 className="text-xl font-bold mb-2 absolute top-20">{type}</h2>
         <p className="text-xl absolute top-28">{temp}°C</p>
+        <p className="text-l absolute top-36 w-full text-center">
+          Feels Like {feelsLikeTemp}°C
+        </p>
       </div>
       <div className="relative" style={{ top: "35%" }}>
         <Image
