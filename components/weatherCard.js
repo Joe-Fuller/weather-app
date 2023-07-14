@@ -36,6 +36,8 @@ export default function WeatherCard({ weatherData, maxRain }) {
     setBackgroundColour(backgroundColours[weatherIcon]);
   });
 
+  const rotation = `rotate(${weatherData.wind.deg - 90}deg)`;
+
   const backgroundColours = {
     "01d": "bg-clearSky-day",
     "01n": "bg-clearSky-night",
@@ -80,6 +82,14 @@ export default function WeatherCard({ weatherData, maxRain }) {
           className="object-contain"
         />
       </div>
+      <Image
+        src="/arrow.png"
+        width={50}
+        height={50}
+        alt="Arrow showing wind direction"
+        className="absolute bottom-20 z-10"
+        style={{ transform: rotation }}
+      ></Image>
       <p className="absolute bottom-10 z-10">High: {maxTemp}°C</p>
       <p className="absolute bottom-4 z-10">Low: {minTemp}°C</p>
       <div className="absolute bottom-0 left-0 w-full z-0">
