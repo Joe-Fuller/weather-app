@@ -4,6 +4,8 @@ export default function WeatherCard({ weatherData }) {
   const temp = (weatherData.main.temp - 273.15).toFixed(1);
   const type = weatherData.weather[0].main;
   const feelsLikeTemp = (weatherData.main.feels_like - 273.15).toFixed(1);
+  const minTemp = (weatherData.main.temp_min - 273.15).toFixed(1);
+  const maxTemp = (weatherData.main.temp_max - 273.15).toFixed(1);
 
   const weatherIcon = weatherData.weather[0].icon;
 
@@ -63,7 +65,8 @@ export default function WeatherCard({ weatherData }) {
           className="object-contain"
         />
       </div>
-      <p className="absolute bottom-4">{formattedTime}</p>
+      <p className="absolute bottom-10">High: {maxTemp}°C</p>
+      <p className="absolute bottom-4">Low: {minTemp}°C</p>
     </div>
   );
 }
