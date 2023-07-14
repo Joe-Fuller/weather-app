@@ -96,7 +96,7 @@ export default function Home() {
     <main
       className={`${backgroundColour} p-10 flex flex-col text-black min-h-screen`}
     >
-      <h1 className="p-4 text-2xl text-center">Welcome to Joe's weather app</h1>
+      <h1 className="p-4 text-2xl text-center">Welcome to Joe's Weather App</h1>
       <div className="flex justify-center">
         <div className="flex p-4">
           <div className="mr-4">
