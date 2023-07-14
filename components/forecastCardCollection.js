@@ -4,6 +4,8 @@ export default function ForecastCardCollection({
   weatherDataCollection,
   minTemp,
   maxTemp,
+  minRain,
+  maxRain,
 }) {
   return (
     <div className="flex flex-row">
@@ -15,6 +17,8 @@ export default function ForecastCardCollection({
               weatherData={weatherData}
               minTemp={minTemp}
               maxTemp={maxTemp}
+              minRain={minRain}
+              maxRain={maxRain}
             />
           </div>
         ))}
