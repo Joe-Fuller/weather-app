@@ -94,7 +94,7 @@ export default function ForecastCard({ weatherData, minTemp, maxTemp }) {
     <div
       className={`relative ${
         backgroundColours[weatherIcon]
-      } w-32 h-96 p-4 flex flex-col items-center ${
+      } w-32 h-[40rem] p-4 flex flex-col items-center ${
         formattedTime === "00:00" ? "border-l-2 border-black" : ""
       }`}
       // style={{

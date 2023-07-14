@@ -41,7 +41,7 @@ export default function WeatherCard({ weatherData }) {
 
   return (
     <div
-      className={`relative ${backgroundColours[weatherIcon]} w-64 h-96 p-4 flex flex-col items-center`}
+      className={`relative ${backgroundColours[weatherIcon]} w-64 h-[40rem] p-4 flex flex-col items-center`}
     >
       <div className="flex flex-col items-center justify-center">
         <h2 className="text-xl font-bold mb-2 absolute top-4">{type}</h2>
