@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function WeatherCard({ weatherData }) {
+export default function WeatherCard({ weatherData, maxRain }) {
   const temp = (weatherData.main.temp - 273.15).toFixed(1);
   const type = weatherData.weather[0].main;
   const feelsLikeTemp = (weatherData.main.feels_like - 273.15).toFixed(1);
@@ -21,7 +21,9 @@ export default function WeatherCard({ weatherData }) {
     });
   }
 
-  const rainHeight = weatherData.rain ? weatherData.rain["1h"] * 100 : 0;
+  const rainHeight = weatherData.rain
+    ? (weatherData.rain["1h"] / maxRain) * 300
+    : 0;
 
   const backgroundColours = {
     "01d": "bg-clearSky-day",

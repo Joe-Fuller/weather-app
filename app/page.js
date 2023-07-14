@@ -119,7 +119,7 @@ export default function Home() {
       ) : (
         <div className="flex">
           <div className="mr-4 flex-grow-2">
-            {currentWeatherData ? (
+            {fiveDayThreeHourWeatherData ? (
               <WeatherCard
                 weatherData={currentWeatherData}
                 maxRain={maxRain}

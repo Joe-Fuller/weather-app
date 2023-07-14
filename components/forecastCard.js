@@ -54,7 +54,7 @@ export default function ForecastCard({
   }
 
   const rainHeight = weatherData.rain
-    ? (weatherData.rain["3h"] / maxRain) * 100
+    ? (weatherData.rain["3h"] / maxRain) * 300
     : 0;
 
   const backgroundColours = {
