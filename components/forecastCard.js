@@ -4,7 +4,6 @@ export default function ForecastCard({
   weatherData,
   minTemp,
   maxTemp,
-  minRain,
   maxRain,
 }) {
   const temp = (weatherData.main.temp - 273.15).toFixed(1);

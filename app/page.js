@@ -13,7 +13,6 @@ export default function Home() {
   const [cityName, setCityName] = useState(false);
   const [minTemp, setMinTemp] = useState(0);
   const [maxTemp, setMaxTemp] = useState(0);
-  const [minRain, setMinRain] = useState(0);
   const [maxRain, setMaxRain] = useState(0);
 
   const [fiveDayThreeHourWeatherData, setFiveDayThreeHourWeatherData] =
@@ -75,19 +74,16 @@ export default function Home() {
   }
 
   function setHighAndLowRain(data) {
-    let currentLow = 100000;
     let currentHigh = -100000;
 
     data.list.forEach((time) => {
-      if (time.rain["1h"] < currentLow) {
-        currentLow = time.rain["1h"];
-      }
-      if (time.rain["1h"] > currentHigh) {
-        currentHigh = time.rain["1h"];
+      if (time.rain) {
+        if (time.rain["3h"] > currentHigh) {
+          currentHigh = time.rain["3h"];
+        }
       }
     });
 
-    setMinRain(currentLow);
     setMaxRain(currentHigh);
   }
 
@@ -126,7 +122,6 @@ export default function Home() {
             {currentWeatherData ? (
               <WeatherCard
                 weatherData={currentWeatherData}
-                minRain={minRain}
                 maxRain={maxRain}
               ></WeatherCard>
             ) : null}
@@ -137,7 +132,6 @@ export default function Home() {
                 weatherDataCollection={fiveDayThreeHourWeatherData}
                 minTemp={minTemp}
                 maxTemp={maxTemp}
-                minRain={minRain}
                 maxRain={maxRain}
               ></ForecastCardCollection>
             ) : null}

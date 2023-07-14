@@ -23,8 +23,6 @@ export default function WeatherCard({ weatherData }) {
 
   const rainHeight = weatherData.rain ? weatherData.rain["1h"] * 100 : 0;
 
-  console.log(weatherData);
-
   const backgroundColours = {
     "01d": "bg-clearSky-day",
     "01n": "bg-clearSky-night",

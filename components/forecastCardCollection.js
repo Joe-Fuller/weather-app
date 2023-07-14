@@ -4,7 +4,6 @@ export default function ForecastCardCollection({
   weatherDataCollection,
   minTemp,
   maxTemp,
-  minRain,
   maxRain,
 }) {
   return (
@@ -17,7 +16,6 @@ export default function ForecastCardCollection({
               weatherData={weatherData}
               minTemp={minTemp}
               maxTemp={maxTemp}
-              minRain={minRain}
               maxRain={maxRain}
             />
           </div>
