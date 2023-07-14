@@ -103,7 +103,7 @@ export default function ForecastCard({ weatherData, minTemp, maxTemp }) {
       //   boxShadow: `0px 0px 10px 5px${weatherCodeToColor[weatherIcon]}`,
       // }}
     >
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center z-10">
         <h2 className="text-xl font-bold mb-2 absolute top-4">{type}</h2>
       </div>
       <div className="relative z-10" style={{ top: calculateIconPosition() }}>
