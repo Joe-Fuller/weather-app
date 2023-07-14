@@ -69,9 +69,9 @@ export default function ForecastCard({ weatherData, minTemp, maxTemp }) {
   return (
     <div
       className={`relative ${backgroundColours[weatherIcon]} w-32 h-96 p-4 flex flex-col items-center`}
-      style={{
-        boxShadow: `0px 0px 10px 5px${weatherCodeToColor[weatherIcon]}`,
-      }}
+      // style={{
+      //   boxShadow: `0px 0px 10px 5px${weatherCodeToColor[weatherIcon]}`,
+      // }}
     >
       <div className="flex flex-col items-center justify-center">
         <h2 className="text-xl font-bold mb-2 absolute top-4">{type}</h2>
