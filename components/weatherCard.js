@@ -23,11 +23,13 @@ export default function WeatherCard({ weatherData, maxRain }) {
   }
 
   const [rainHeight, setRainHeight] = useState(0);
+  const [backgroundColour, setBackgroundColour] = useState("bg-background-day");
 
   useEffect(() => {
     setRainHeight(
       weatherData.rain ? (weatherData.rain["1h"] / maxRain) * 900 : 0
     );
+    setBackgroundColour(backgroundColours[weatherIcon]);
   });
 
   const backgroundColours = {
@@ -53,7 +55,7 @@ export default function WeatherCard({ weatherData, maxRain }) {
 
   return (
     <div
-      className={`relative ${backgroundColours[weatherIcon]} w-64 h-[40rem] p-4 flex flex-col items-center transition`}
+      className={`relative ${backgroundColour} w-64 h-[40rem] p-4 flex flex-col items-center transition`}
     >
       <div className="flex flex-col items-center justify-center z-10">
         <h2 className="text-xl absolute top-4 text-center w-full">

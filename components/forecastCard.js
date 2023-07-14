@@ -55,11 +55,13 @@ export default function ForecastCard({
   }
 
   const [rainHeight, setRainHeight] = useState(0);
+  const [backgroundColour, setBackgroundColour] = useState("bg-background-day");
 
   useEffect(() => {
     setRainHeight(
       weatherData.rain ? (weatherData.rain["3h"] / maxRain) * 300 : 0
     );
+    setBackgroundColour(backgroundColours[weatherIcon]);
   });
 
   const backgroundColours = {
@@ -106,9 +108,7 @@ export default function ForecastCard({
 
   return (
     <div
-      className={`relative ${
-        backgroundColours[weatherIcon]
-      } w-32 h-[40rem] p-4 flex flex-col items-center ${
+      className={`relative ${backgroundColour} w-32 h-[40rem] p-4 flex flex-col items-center ${
         formattedTime === "00:00" ? "border-l-2 border-black" : ""
       } transition`}
       // style={{
