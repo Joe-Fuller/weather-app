@@ -55,7 +55,11 @@ export default function ForecastCard({
   }
 
   const [rainHeight, setRainHeight] = useState(0);
-  const [backgroundColour, setBackgroundColour] = useState("bg-background-day");
+  const [backgroundColour, setBackgroundColour] = useState(
+    new Date().getHours() >= 6 && new Date().getHours() < 18
+      ? "bg-background-day"
+      : "bg-background-night"
+  );
 
   useEffect(() => {
     setRainHeight(
