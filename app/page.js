@@ -6,6 +6,8 @@ import WeatherCard from "@/components/weatherCard";
 import ForecastCardCollection from "@/components/forecastCardCollection";
 
 export default function Home() {
+  const [isError, setIsError] = useState(false);
+  const [errorText, setErrorText] = useState("");
   const [city, setCity] = useState("");
   const [currentWeatherData, setCurrentWeatherData] = useState(false);
   const [cityName, setCityName] = useState(false);
@@ -19,18 +21,26 @@ export default function Home() {
     const currentWeatherDataRes = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${city},uk&APPID=773c1c3ec776d5f2490ffcf71260d854`
     );
-    const receivedCurrentWeatherData = await currentWeatherDataRes.json();
-    setCurrentWeatherData(receivedCurrentWeatherData);
+    if (!currentWeatherDataRes.ok) {
+      setIsError(true);
+      setErrorText(city);
+    } else {
+      setIsError(false);
 
-    const fiveDayThreeHourWeatherDataRes = await fetch(
-      `http://api.openweathermap.org/data/2.5/forecast?q=${city},uk&APPID=773c1c3ec776d5f2490ffcf71260d854`
-    );
-    const receivedFiveDayThreeHourWeatherData =
-      await fiveDayThreeHourWeatherDataRes.json();
-    setFiveDayThreeHourWeatherData(receivedFiveDayThreeHourWeatherData.list);
+      const receivedCurrentWeatherData = await currentWeatherDataRes.json();
 
-    setHighAndLowTemp(receivedFiveDayThreeHourWeatherData);
-    formatCityName();
+      setCurrentWeatherData(receivedCurrentWeatherData);
+
+      const fiveDayThreeHourWeatherDataRes = await fetch(
+        `http://api.openweathermap.org/data/2.5/forecast?q=${city},uk&APPID=773c1c3ec776d5f2490ffcf71260d854`
+      );
+      const receivedFiveDayThreeHourWeatherData =
+        await fiveDayThreeHourWeatherDataRes.json();
+      setFiveDayThreeHourWeatherData(receivedFiveDayThreeHourWeatherData.list);
+
+      setHighAndLowTemp(receivedFiveDayThreeHourWeatherData);
+      formatCityName();
+    }
   }
 
   function formatCityName() {
@@ -88,22 +98,26 @@ export default function Home() {
         </h2>
       ) : null}
 
-      <div className="flex">
-        <div className="mr-4 flex-grow-2">
-          {currentWeatherData ? (
-            <WeatherCard weatherData={currentWeatherData}></WeatherCard>
-          ) : null}
+      {isError ? (
+        <div className="text-center">City '{errorText}' not found</div>
+      ) : (
+        <div className="flex">
+          <div className="mr-4 flex-grow-2">
+            {currentWeatherData ? (
+              <WeatherCard weatherData={currentWeatherData}></WeatherCard>
+            ) : null}
+          </div>
+          <div className="grid grid-cols-1 gap-4 flex-grow">
+            {fiveDayThreeHourWeatherData ? (
+              <ForecastCardCollection
+                weatherDataCollection={fiveDayThreeHourWeatherData}
+                minTemp={minTemp}
+                maxTemp={maxTemp}
+              ></ForecastCardCollection>
+            ) : null}
+          </div>
         </div>
-        <div className="grid grid-cols-1 gap-4 flex-grow">
-          {fiveDayThreeHourWeatherData ? (
-            <ForecastCardCollection
-              weatherDataCollection={fiveDayThreeHourWeatherData}
-              minTemp={minTemp}
-              maxTemp={maxTemp}
-            ></ForecastCardCollection>
-          ) : null}
-        </div>
-      </div>
+      )}
     </main>
   );
 }
