@@ -16,12 +16,36 @@ export default function ForecastCard({ weatherData, minTemp, maxTemp }) {
 
   const time = weatherData.dt_txt;
   let formattedTime = "";
+  let day = "";
   if (time) {
     const date = new Date(time);
     formattedTime = date.toLocaleTimeString([], {
       hour: "numeric",
       minute: "2-digit",
     });
+    if (formattedTime === "00:00") {
+      day += date.toLocaleString([], { weekday: "long" }).substring(0, 3);
+      day += " ";
+
+      const dayNumber = date.toLocaleString([], { day: "numeric" });
+
+      day += dayNumber;
+
+      if (dayNumber >= 11 && dayNumber <= 13) {
+        day += "th";
+      } else {
+        switch (dayNumber % 10) {
+          case 1:
+            day += "st";
+          case 2:
+            day += "nd";
+          case 3:
+            day += "rd";
+          default:
+            day += "th";
+        }
+      }
+    }
   }
 
   const backgroundColours = {
@@ -87,6 +111,9 @@ export default function ForecastCard({ weatherData, minTemp, maxTemp }) {
         <p className="text-xl text-center">{temp}°C</p>
       </div>
       <p className="absolute bottom-4">{formattedTime}</p>
+      {formattedTime === "00:00" ? (
+        <p className="absolute bottom-0">{day}</p>
+      ) : null}
     </div>
   );
 }
