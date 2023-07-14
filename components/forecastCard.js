@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function ForecastCard({
   weatherData,
@@ -53,9 +54,13 @@ export default function ForecastCard({
     }
   }
 
-  const rainHeight = weatherData.rain
-    ? (weatherData.rain["3h"] / maxRain) * 300
-    : 0;
+  const [rainHeight, setRainHeight] = useState(0);
+
+  useEffect(() => {
+    setRainHeight(
+      weatherData.rain ? (weatherData.rain["3h"] / maxRain) * 300 : 0
+    );
+  });
 
   const backgroundColours = {
     "01d": "bg-clearSky-day",
