@@ -22,7 +22,7 @@ export default function WeatherCard({ weatherData, maxRain }) {
   }
 
   const rainHeight = weatherData.rain
-    ? (weatherData.rain["1h"] / maxRain) * 300
+    ? (weatherData.rain["1h"] / maxRain) * 900
     : 0;
 
   const backgroundColours = {
