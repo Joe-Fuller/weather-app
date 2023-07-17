@@ -36,7 +36,7 @@ export default function WeatherCard({ weatherData, maxRain }) {
     setBackgroundColour(backgroundColours[weatherIcon]);
   });
 
-  const rotation = `rotate(${weatherData.wind.deg - 90}deg)`;
+  const rotation = `rotate(${weatherData.wind.deg + 90}deg)`;
 
   const backgroundColours = {
     "01d": "bg-clearSky-day",
