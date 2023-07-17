@@ -134,14 +134,16 @@ export default function ForecastCard({
         />
         <p className="text-xl text-center">{temp}°C</p>
       </div>
-      <Image
-        src="/arrow.png"
-        width={50}
-        height={50}
-        alt="Arrow showing wind direction"
-        className="absolute bottom-12 z-10"
-        style={{ transform: rotation }}
-      ></Image>
+      <div className="absolute bottom-12 z-10 text-center">
+        <p>{weatherData.wind.speed} m/s</p>
+        <Image
+          src="/arrow.png"
+          width={50}
+          height={50}
+          alt="Arrow showing wind direction"
+          style={{ transform: rotation }}
+        ></Image>
+      </div>
       <p className="absolute bottom-4 z-10">{formattedTime}</p>
       {formattedTime === "00:00" ? (
         <p className="absolute bottom-0 z-10">{day}</p>
