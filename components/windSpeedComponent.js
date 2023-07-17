@@ -4,7 +4,7 @@ export default function WindSpeedComponent({ windSpeed, windDirection }) {
   const rotation = `rotate(${windDirection + 90}deg)`;
 
   return (
-    <div className="absolute bottom-12 z-10 text-center">
+    <div className="flex flex-col items-center">
       <p>{windSpeed} m/s</p>
       <Image
         src="/arrow.png"

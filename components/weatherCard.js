@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import WindSpeedComponent from "./windSpeedComponent";
 
 export default function WeatherCard({ weatherData, maxRain }) {
   const temp = (weatherData.main.temp - 273.15).toFixed(1);
@@ -35,8 +36,6 @@ export default function WeatherCard({ weatherData, maxRain }) {
     );
     setBackgroundColour(backgroundColours[weatherIcon]);
   });
-
-  const rotation = `rotate(${weatherData.wind.deg + 90}deg)`;
 
   const backgroundColours = {
     "01d": "bg-clearSky-day",
@@ -82,14 +81,12 @@ export default function WeatherCard({ weatherData, maxRain }) {
           className="object-contain"
         />
       </div>
-      <Image
-        src="/arrow.png"
-        width={50}
-        height={50}
-        alt="Arrow showing wind direction"
-        className="absolute bottom-20 z-10"
-        style={{ transform: rotation }}
-      ></Image>
+      <div className="absolute bottom-20 z-10">
+        <WindSpeedComponent
+          windSpeed={weatherData.wind.speed}
+          windDirection={weatherData.wind.deg}
+        ></WindSpeedComponent>
+      </div>
       <p className="absolute bottom-10 z-10">High: {maxTemp}°C</p>
       <p className="absolute bottom-4 z-10">Low: {minTemp}°C</p>
       <div className="absolute bottom-0 left-0 w-full z-0">

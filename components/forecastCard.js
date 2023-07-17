@@ -133,10 +133,12 @@ export default function ForecastCard({
         />
         <p className="text-xl text-center">{temp}°C</p>
       </div>
-      <WindSpeedComponent
-        windSpeed={weatherData.wind.speed}
-        windDirection={weatherData.wind.deg}
-      ></WindSpeedComponent>
+      <div className="absolute bottom-12 z-10">
+        <WindSpeedComponent
+          windSpeed={weatherData.wind.speed}
+          windDirection={weatherData.wind.deg}
+        ></WindSpeedComponent>
+      </div>
       <p className="absolute bottom-4 z-10">{formattedTime}</p>
       {formattedTime === "00:00" ? (
         <p className="absolute bottom-0 z-10">{day}</p>
